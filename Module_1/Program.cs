@@ -95,11 +95,114 @@ namespace Module_1
                     Console.Write("{0}\n", numbers[i]);
                 }
             }
-            if(test == "5")
+            if (test == "5")
             {
-                //DateTime d;
-                //string data = Convert.d.ToString("22.12.2021");
-                //CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(d.DayOfWeek);
+                Console.WriteLine("Введите дату: ");
+                string date = Console.ReadLine();
+                int day = Convert.ToInt32(date.Substring(0, 2));
+                int month = Convert.ToInt32(date.Substring(3, 2));
+                int year = Convert.ToInt32(date.Substring(6, 4));
+                string season;
+                if (month <= 2 || month == 12)
+                {
+                    season = "Winter";
+                }
+                else if (month <= 5 || month >= 3)
+                {
+                    season = "Spring";
+                }
+                else if (month <= 8 || month >= 6)
+                {
+                    season = "Summer";
+                }
+                else
+                {
+                    season = "Autumn";
+                }
+                int dayWeek = day % 7;
+                string dayName = "";
+                switch (dayWeek)
+                {
+                    case 0:
+                        dayName = "Monday";
+                        break;
+                    case 1:
+                        dayName = "Tuesday";
+                        break;
+                    case 2:
+                        dayName = "Wednesday";
+                        break;
+                    case 3:
+                        dayName = "Thursday";
+                        break;
+                    case 4:
+                        dayName = "Friday";
+                        break;
+                    case 5:
+                        dayName = "Saturday";
+                        break;
+                    case 6:
+                        dayName = "Sunday";
+                        break;
+                }
+                Console.WriteLine("Результат: {0} {1} {2} {3}", season, year, dayName, day);
+                Console.ReadKey();
+            }
+            if (test == "6")
+            {
+                Console.WriteLine("Введите температуру в \n1.Цельсиях \n2.Фаренгейтах");
+                double num = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Введите температуру: ");
+                double tempe = Convert.ToInt32(Console.ReadLine());
+
+                double res = 0;
+                if (num == 1)
+                {
+                    res = (tempe * (1.8)) + 32;
+                    Console.WriteLine($"Температура в Цельсиях {tempe} - температура в Фаренгейтах {res} ");
+                }
+                else if (num == 2)
+                {
+                    res = (tempe - 32) * 0.55555556;
+                    Console.WriteLine($"Температура в Фаренгейтах {tempe} - температура в Цельсиях {res} ");
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка вы ввели некорректное значение");
+                }
+            }
+            if (test == "7")
+            {
+                Console.Write("Введите диапазон от: ");
+                int num1 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("И до: ");
+                int num2 = Convert.ToInt32(Console.ReadLine());
+
+                int even = 0;
+
+                if (num1 > num2)
+                {
+                    for (int i = num2; i < num1; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            even++;
+                        }
+                    }
+                }
+                else if (num2 >= num1)
+                {
+                    for (int i = num2; i < num1; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            even++;
+                        }
+                    }
+                }
+
+                Console.WriteLine($"Количество четных чисел {even}");
             }
         }
     }
